@@ -1,32 +1,31 @@
 /*
 Haya Alhumaid
-CSE 1341
-Final project
-*/
-int w=30;
-int h=30;
-int s=20;
-ArrayList<Integer> x= new ArrayList<Integer>();
-ArrayList<Integer> y= new ArrayList<Integer>();
+ CSE 1341
+ Final project
+ */
 
-void setup(){
-  size(500,500);
-  x.add(5);
-  y.add(5);
+Snake snake1= new Snake();
+int score=0;
+int box=20;
+
+void setup() {
+  size(500, 500);
+  background(255);
 }
 
-void draw(){
+void draw() {
+  //Vertical Grid
   background(255);
-  for(int i=0; i<w; i++){
-    line(i*s,0,i*s,height);
+  for (float i = 0; i < width; i = i+20) {
+    line(0, i, 500, i);
   }
-  for (int i=0; i<h;i++){
-  line(0,i*s,width,i*s);
+  //Horizontal Grid
+  for (float i = 0; i < width; i = i+20) {
+    line(i, 0, i, 500);
   }
-  for (int i=0; i<x.size(); i++) {
-    fill(0, 0, 255);
-    rect(x.get(i)*s, y.get(i)*s, s, s);
-  }
- 
-  
+  snake1.drawSnake();
+  snake1.endGame();
+  snake1.resetGame();
+  textSize(25);
+  text(score, 30, box);
 }
